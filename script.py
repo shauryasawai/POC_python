@@ -4,17 +4,14 @@ from gtts import gTTS
 from pydub import AudioSegment
 from pydub.utils import which
 
-# Ensure the path to ffmpeg is correct
 ffmpeg_path = r"C:\FFmpeg\bin"
 os.environ["PATH"] += os.pathsep + ffmpeg_path
 
-# Ensure pydub knows where to find ffmpeg and ffprobe
 AudioSegment.converter = which("ffmpeg")
 AudioSegment.ffprobe = which("ffprobe")
 # Streamlit app starts here
 st.title("Audio Processing with AI Voice Replacement")
 
-# File uploader to select an MP3 or WAV file
 uploaded_file = st.file_uploader("Upload an MP3 or WAV file", type=['mp3', 'wav'])
 
 if uploaded_file is not None:
